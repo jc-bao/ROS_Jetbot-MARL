@@ -4,36 +4,34 @@ import gym
 from baselines import deepq
 import rospy
 import rospkg
-# TODO import your env
-import my_one_disk_walk
-
-
+# TODO[done] import your env
+import jetbot_task_env
 
 def main():
-    rospy.init_node('movingcube_onedisk_walk_gym', anonymous=True, log_level=rospy.WARN)
+    rospy.init_node('jetbot_train_gym', anonymous=True, log_level=rospy.WARN)
     
     # Set the path where learned model will be saved
+    # TODO[done] change the path to save
     rospack = rospkg.RosPack()
-    pkg_path = rospack.get_path('my_moving_cube_pkg')
+    pkg_path = rospack.get_path('jetbot_rl_pkg')
     models_dir_path = os.path.join(pkg_path, "models_saved")
     if not os.path.exists(models_dir_path):
         os.makedirs(models_dir_path)
     
-    out_model_file_path = os.path.join(models_dir_path, "movingcube_model.pkl") 
+    out_model_file_path = os.path.join(models_dir_path, "jetbot_model.pkl") 
     
     
-    max_timesteps = rospy.get_param("/moving_cube/max_timesteps")
-    buffer_size = rospy.get_param("/moving_cube/buffer_size")
+    max_timesteps = rospy.get_param("/jetbot_0/max_timesteps")
+    buffer_size = rospy.get_param("/jetbot_0/buffer_size")
     # We convert to float becase if we are using Ye-X notation, it sometimes treats it like a string.
-    lr = float(rospy.get_param("/moving_cube/lr"))
+    lr = float(rospy.get_param("/jetbot_0/lr"))
     
-    exploration_fraction = rospy.get_param("/moving_cube/exploration_fraction")
-    exploration_final_eps = rospy.get_param("/moving_cube/exploration_final_eps")
-    print_freq = rospy.get_param("/moving_cube/print_freq")
+    exploration_fraction = rospy.get_param("/jetbot_0/exploration_fraction")
+    exploration_final_eps = rospy.get_param("/jetbot_0/exploration_final_eps")
+    print_freq = rospy.get_param("/jetbot_0/print_freq")
     
-    reward_task_learned = rospy.get_param("/moving_cube/reward_task_learned")
+    reward_task_learned = rospy.get_param("/jetbot_0/reward_task_learned")
     
-    # TODO define callback to decide when to stop
     def callback(lcl, _glb):
         # stop training if reward exceeds 199
         aux1 = lcl['t'] > 100
@@ -47,7 +45,8 @@ def main():
         
         return is_solved
     
-    env = gym.make("MyMovingCubeOneDiskWalkEnv-v0")
+    # TODO[done] change register's name
+    env = gym.make("JetbotTaskEnv-v0")
     
     act = deepq.learn(
         env,

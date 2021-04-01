@@ -1,0 +1,5 @@
+<launch>
+    <rosparam command="load" file="$(find jetbot_rl_pkg)/config/jetbot_params_deepQ.yaml" />
+    <!-- Launch the training system -->
+    <node pkg="jetbot_rl_pkg" name="jetbot_gym" type="jetbot_start_deepq.py" output="screen"/>
+</launch>
