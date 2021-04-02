@@ -10,8 +10,7 @@ from gym.envs.registration import register
 from geometry_msgs.msg import Point
 from tf.transformations import euler_from_quaternion
 
-# TODO[done] set steps to train
-max_episode_steps = 10 # Can be any Value
+max_episode_steps = rospy.get_param('/jetbot_0/max_episode_steps')
 
 # TODO[done] register your env
 register(

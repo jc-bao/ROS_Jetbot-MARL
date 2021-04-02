@@ -120,7 +120,7 @@ class JetbotRobotEnv(robot_gazebo_env.RobotGazeboEnv):
         Checks that all the publishers are working
         :return:
         """
-        rate = rospy.Rate(10)  # 10hz
+        rate = rospy.Rate(10)  # 1hz
         while self._vel_pub.get_num_connections() == 0 and not rospy.is_shutdown():
             rospy.logdebug("No susbribers to _vel_pub yet so we wait and try again")
             try:
