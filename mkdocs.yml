@@ -8,6 +8,7 @@ nav:
     - 'Install': 'install.md'
     - 'Use Cases': 'use_cases.md'
     - 'Key Concepts': 'key_concepts.md'
+    - 'Commom Issues': 'commom_issues'
 
 markdown_extensions:
     - admonition

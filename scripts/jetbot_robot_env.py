@@ -187,7 +187,7 @@ class JetbotRobotEnv(robot_gazebo_env.RobotGazeboEnv):
         rate = rospy.Rate(10)
         start_wait_time = rospy.get_rostime().to_sec()
         end_wait_time = 0.0
-        epsilon = 0.1
+        epsilon = 1
         v_plus = target_linear_vel + epsilon
         v_minus = target_linear_vel - epsilon
         w_pulse = target_angular_vel + epsilon
