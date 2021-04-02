@@ -32,7 +32,7 @@ class JetbotRobotEnv(robot_gazebo_env.RobotGazeboEnv):
         self.robot_name_space = "jetbot_0"
 
         # We launch the init function of the Parent Class robot_gazebo_env.RobotGazeboEnv
-        super(MyCubeSingleDiskEnv, self).__init__(controllers_list=self.controllers_list,
+        super(JetbotRobotEnv, self).__init__(controllers_list=self.controllers_list,
                                                 robot_name_space=self.robot_name_space,
                                                 reset_controls=True)
 
@@ -59,7 +59,7 @@ class JetbotRobotEnv(robot_gazebo_env.RobotGazeboEnv):
                                         geometry_msgs/Twist, queue_size=1) # ??? queue size
 
         self._check_publishers_connection()
-
+        
         self.gazebo.pauseSim()
 
     # Methods needed by the RobotGazeboEnv

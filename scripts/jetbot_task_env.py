@@ -4,8 +4,8 @@ import rospy
 import numpy
 import math
 from gym import spaces
-# TODO import your robot env
-import my_cube_single_disk_env
+# TODO[done] import your robot env
+import jetbot_robot_env
 from gym.envs.registration import register
 from geometry_msgs.msg import Point
 from tf.transformations import euler_from_quaternion
@@ -32,7 +32,6 @@ class JetbotTaskEnv(jetbot_robot_env.JetbotRobotEnv):
         # TODO[done] set observation space setup
         self.linear_speed_fixed_value = rospy.get_param('/jetbot_0/linear_speed_fixed_value')
         self.angular_speed_fixed_value = rospy.get_param('/jetbot_0/angular_speed_fixed_value')
-        self.speed_increment_value = rospy.get_param('/jetbot_0/speed_increment_value')
         self.max_x = rospy.get_param('/jetbot_0/max_x')
         self.max_y = rospy.get_param('/jetbot_0/max_y')
         number_observations = rospy.get_param('/jetbot_0/n_observations')
@@ -73,7 +72,7 @@ class JetbotTaskEnv(jetbot_robot_env.JetbotRobotEnv):
 
         self.cumulated_steps = 0.0
 
-        # TODO[done] init your robot env (change name)
+        # TODO[done] init your **task!** env (change name)
         # Here we will add any init functions prior to starting the MyRobotEnv
         super(JetbotTaskEnv, self).__init__()
 
@@ -221,6 +220,4 @@ class JetbotTaskEnv(jetbot_robot_env.JetbotRobotEnv):
         return roll, pitch, yaw
 
     def get_pos(self):
-        return self.odom.pose.pose.position.x,
-                self.odom.pose.pose.position.y,
-                self.odom.pose.pose.position.z
+        return self.odom.pose.pose.position.x,self.odom.pose.pose.position.y,self.odom.pose.pose.position.z
