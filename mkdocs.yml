@@ -1,1 +1,7 @@
 site_name: My Docs
+
+nav:
+    - Home: 'index.md'
+    - 'Install': 'install.md'
+    - 'Use Cases': 'use_cases.md'
+    - 'Key Concepts': 'key_concepts.md'
