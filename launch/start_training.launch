@@ -1,5 +1,88 @@
 <launch>
+    <arg name="robot_namespace" default="robot"/>
+    <arg name="world_name" default="$(find jetbot_gazebo)/worlds/empty.world" />
+    <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+    <arg name="paused" default="false"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
+    <arg name="debug" default="false"/>
+    <!-- Initial Location of the robot -->
+    <!-- location for jetbot_0 -->
+    <arg name="x0" default="0.0"/>
+    <arg name="y0" default="0.0"/>
+    <arg name="z0" default="0.0"/>
+    <arg name="yaw0" default="0.0"/> 
+    <!-- Arguments for intel realsense -->
+    <arg name="pointcloud_enable" default="false" />
+    <arg name="realsense_enable" default="false" />
+    <!-- Arguments for RPLidar -->
+    <arg name="lidar_enable" default="false" />
+    <arg name="visualize_laser" default="false" /> 
+    <!-- Arguments for IMU -->
+    <arg name="imu_enable" default="true" />
+    <!-- Arguments for GPS -->
+    <arg name="gps_enable" default="false" />
+    <!-- Arguments for sonars -->
+    <arg name="ultrasonic_enable" default="false" />
+    <!-- gazebo setup -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="headless" value="$(arg headless)"/>
+        <arg name="world_name" value="$(arg world_name)" />    
+    </include>
+    <!-- Get the robot description -->
+    <!-- cannot be deleted  -->
+    <include file="$(find jetbot_description)/launch/description.launch">
+        <arg name="pointcloud_enable" value="$(arg pointcloud_enable)" />
+        <arg name="realsense_enable" value="$(arg realsense_enable)" />
+        <arg name="lidar_enable" value="$(arg lidar_enable)"/>
+        <arg name="visualize_laser" value="$(arg visualize_laser)"/>
+        <arg name="imu_enable" value="$(arg imu_enable)"/>
+        <arg name="ultrasonic_enable" value="$(arg ultrasonic_enable)"/>    
+    </include>
+    <rosparam file="$(find jetbot_control)/config/pid.yaml" command="load" ns="/" />
+    <group ns="jetbot_0">
+        <rosparam file="$(find jetbot_control)/config/control.yaml" command="load"/>
+        <param name="/jetbot_0/robot_description" command="$(find xacro)/xacro $(find jetbot_description)/urdf/jetbot.urdf.xacro
+                                pointcloud_enable:=$(arg pointcloud_enable) 
+                                realsense_enable:=$(arg realsense_enable)
+                                lidar_enable:=$(arg lidar_enable)
+                                visualize_laser:=$(arg visualize_laser)
+                                imu_enable:=$(arg imu_enable)
+                                gps_enable:=$(arg gps_enable)
+                                ultrasonic_enable:=$(arg ultrasonic_enable)" />
+        <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+            args="-x $(arg x0)
+                -y $(arg y0)
+                -z $(arg z0)
+                -Y $(arg yaw0)
+                -unpause
+                -urdf
+                -param robot_description
+                -model jetbot_0" 
+            respawn="false"
+            output="screen" >
+        </node>
+        <!-- Spawn controllers -->
+        <!-- Load controller configuration -->
+        <!-- A GUI controller to publish commands to topics -->
+        
+
+        <node name="base_controller_spawner" pkg="controller_manager" type="spawner"
+            args="jetbot_joint_state_controller jetbot_velocity_controller" >
+        </node>
+        <!-- Note: cannot be removed -->
+        <node name="jetbot_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+        <param name="default_topic" value="/jetbot_0/jetbot_velocity_controller/cmd_vel"/>
+        </node> 
+    </group>
+
+    
     <rosparam command="load" file="$(find jetbot_rl_pkg)/config/jetbot_params_deepQ.yaml" />
-    <!-- Launch the training system -->
+    Launch the training system
     <node pkg="jetbot_rl_pkg" name="jetbot_gym" type="jetbot_start_deepq.py" output="screen"/>
 </launch>

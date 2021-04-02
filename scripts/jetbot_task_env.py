@@ -58,8 +58,8 @@ class JetbotTaskEnv(jetbot_robot_env.JetbotRobotEnv):
         
         # TODO[done] set init state
         # Variables that we retrieve through the param server, loded when launch training launch.
-        self.init_roll_vel = rospy.get_param("/jetbot_0/init_linear_vel")
-        self.init_roll_vel = rospy.get_param("/jetbot_0/init_angular_vel")
+        self.init_linear_vel = rospy.get_param("/jetbot_0/init_linear_vel")
+        self.init_angular_vel = rospy.get_param("/jetbot_0/init_angular_vel")
         self.start_point = Point()
         self.start_point.x = rospy.get_param("/jetbot_0/init_pose/x")
         self.start_point.y = rospy.get_param("/jetbot_0/init_pose/y")
@@ -88,7 +88,7 @@ class JetbotTaskEnv(jetbot_robot_env.JetbotRobotEnv):
     def _set_init_pose(self):
         """Sets the Robot in its init pose
         """
-        self.move_joints(self.init_roll_vel)
+        self.move_joints(self.init_linear_vel,self.init_angular_vel)
 
         return True
 
@@ -172,6 +172,8 @@ class JetbotTaskEnv(jetbot_robot_env.JetbotRobotEnv):
 
     def _compute_reward(self, observations, done):
 
+        reward = 0
+
         if not done:
 
             # make x as large as possible
@@ -192,6 +194,8 @@ class JetbotTaskEnv(jetbot_robot_env.JetbotRobotEnv):
             rospy.logdebug("yaw=" + str(yaw))
             reward_yaw = -1 * abs(yaw) * self.yaw_weight
             rospy.logdebug("reward_yaw=" + str(reward_yaw))
+
+            reward = reward_x + reward_y + reward_yaw
 
         else:
             reward = -1*self.end_episode_points

@@ -56,7 +56,7 @@ class JetbotRobotEnv(robot_gazebo_env.RobotGazeboEnv):
         rospy.Subscriber("/jetbot_0/jetbot_velocity_controller/odom", Odometry, self._odom_callback)
 
         self._vel_pub = rospy.Publisher('/jetbot_0/jetbot_velocity_controller/cmd_vel',
-                                        geometry_msgs/Twist, queue_size=1) # ??? queue size
+                                        Twist, queue_size=6) # ??? queue size
 
         self._check_publishers_connection()
         
@@ -178,7 +178,8 @@ class JetbotRobotEnv(robot_gazebo_env.RobotGazeboEnv):
         vel_msg.angular.z = angular_vel
         rospy.logdebug("Jetbot Velocity>>" + str(linear_vel)+','+str(angular_vel))
         self._vel_pub.publish(vel_msg)
-        self.wait_until_jetbot_is_in_vel(joint_speed_value.data)
+        # TODO[done] Change the desired velocity
+        self.wait_until_jetbot_is_in_vel(linear_vel,angular_vel)
     
     # TODO[done] sub function of move_joint
     def wait_until_jetbot_is_in_vel(self, target_linear_vel, target_angular_vel):
@@ -195,7 +196,7 @@ class JetbotRobotEnv(robot_gazebo_env.RobotGazeboEnv):
             joint_data = self._check_joint_states_ready()
             real_linear_vel = (joint_data.velocity[0]+joint_data.velocity[1])
             rospy.logdebug("VEL=" + str(real_linear_vel) + ", ?RANGE=[" + str(v_minus) + ","+str(v_plus)+"]")
-            are_close = (real_linear_vel <= v_plus) and (roll_vel > v_minus)
+            are_close = (real_linear_vel <= v_plus) and (real_linear_vel > v_minus)
             if are_close:
                 rospy.logdebug("Reached Velocity!")
                 end_wait_time = rospy.get_rostime().to_sec()
