@@ -1,3 +1,3 @@
 # jetbot_rl
 
-* see docs at https://jetbot-rl.readthedocs.io/en/latest/?
+* see docs at https://jc-bao.github.io/jetbot_rl/
