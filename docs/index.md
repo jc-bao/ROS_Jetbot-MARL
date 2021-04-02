@@ -1,4 +1,4 @@
-# Welcome to Reinforcement Learning for Jetbot
+# Reinforcement Learning for Jetbot
 
 ## Introduction
 

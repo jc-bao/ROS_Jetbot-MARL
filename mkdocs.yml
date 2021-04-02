@@ -1,7 +1,10 @@
 site_name: My Docs
 
+theme:
+    name: material
+
 nav:
-    - Home: 'index.rst'
+    - Home: 'index.md'
     - 'Install': 'install.md'
     - 'Use Cases': 'use_cases.md'
     - 'Key Concepts': 'key_concepts.md'

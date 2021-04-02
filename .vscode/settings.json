@@ -1,0 +1,4 @@
+{
+    "restructuredtext.confPath": "${workspaceFolder}/docs",
+    "python.pythonPath": "/Users/reedpan/opt/anaconda3/envs/robostackenv/bin/python"
+}

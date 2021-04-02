@@ -2,8 +2,6 @@
 
 #### 1. Develop your own RL Task
 
-> Note: All staff you need to change in the code is commented by `TODO` in code. 
-
 1. Robot Environment `Jetbot_robot_env.py`
 
    * The thing you need to do in this file:
@@ -12,7 +10,7 @@
      * Determine how to control
      * Determine which sensor to use
      * Set virtual method for Task Environment
-
+     * Note: All staff you need to change in the code is commented by `TODO` in code. 
    * Details
 
      * Init robot envrionment from gazebo environment.
@@ -29,17 +27,12 @@
                                        ]
        ```
 
-       > Hint: you can use `$ rosservice call /jetbot_0/controller_manager/list_controllers`to get the controller
+       !!! note
+          you can use `$ rosservice call /jetbot_0/controller_manager/list_controllers ` to get the controller
 
-     * Change the namespace
-
-       ```
-       self.robot_name_space = "jetbot_0"
-       ```
-
-       > Hint: use `$ rostopic list | grep controller*` to get the namespace
-
-     * 
+      * Change the namespace `python self.robot_name_space = "jetbot_0" `
+        !!! note
+          use this to get the namespace`$ rostopic list | grep controller`
 
 #### 2. Start training
 
