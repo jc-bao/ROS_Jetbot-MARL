@@ -3,7 +3,7 @@
 import numpy
 import rospy
 from openai_ros import robot_gazebo_env
-# TODO impoer msg type
+# TODO import msg type
 from std_msgs.msg import Float64
 from sensor_msgs.msg import JointState
 from nav_msgs.msg import Odometry
@@ -26,9 +26,9 @@ class JetbotRobotEnv(robot_gazebo_env.RobotGazeboEnv):
         # Internal Vars
         # TODO[done] add controler Hint: $ rosservice call /jetbot_0/controller_manager/list_controllers
         self.controllers_list = ['jetbot_joint_state_controller',
-                                 'jetbot_velocity_controller'
-                                 ]
-        # TODO[done] add name spacr Hint: $ rostopic list | grep controller
+                                'jetbot_velocity_controller'
+                                ]
+        # TODO[done] add namespace Hint: $ rostopic list | grep controller
         self.robot_name_space = "jetbot_0"
 
         # We launch the init function of the Parent Class robot_gazebo_env.RobotGazeboEnv
@@ -56,7 +56,7 @@ class JetbotRobotEnv(robot_gazebo_env.RobotGazeboEnv):
         rospy.Subscriber("/jetbot_0/jetbot_velocity_controller/odom", Odometry, self._odom_callback)
 
         self._vel_pub = rospy.Publisher('/jetbot_0/jetbot_velocity_controller/cmd_vel',
-                                             geometry_msgs/Twist, queue_size=1) # ??? queue size
+                                        geometry_msgs/Twist, queue_size=1) # ??? queue size
 
         self._check_publishers_connection()
 
