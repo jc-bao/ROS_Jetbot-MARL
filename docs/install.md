@@ -46,3 +46,14 @@ catkin_make
 source devel/setup.bash
 ```
 
+#### Extra: Install Mkdocs and [Materials](https://squidfunk.github.io/mkdocs-material/getting-started/)
+
+```shell
+conda install -y mkdocs mkdocs-material
+
+cd $YOUR_WORK_DIRECTORY
+mkdocs serve # check if the doc works @ http://localhost:8000/
+
+mkdocs gh-deploy --force # push to github and deploy
+```
+

@@ -235,6 +235,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#extra-install-mkdocs-and-materials" class="md-nav__link">
+    Extra: Install Mkdocs and Materials
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -333,6 +340,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#extra-install-mkdocs-and-materials" class="md-nav__link">
+    Extra: Install Mkdocs and Materials
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -351,17 +365,15 @@
 <p>Quick install instruction:</p>
 <pre><code>conda create -n ros ros-noetic-desktop -conda-forge -c robostack &amp;&amp; conda activate ros
 
-cd ~/catkin_ws
-git clone -r https://github.com/jc-bao/Jetbot_RLFormationControl.git
-mv Jetbot_FormationControl/* src
-rm -r Jetbot_FormationControl
-catkin_make
+cd ~/catkin_ws/src
+git clone --recursive https://github.com/jc-bao/Jetbot_RLFormationControl.git
+cd ..; catkin_make
 source devel/setup.bash
 </code></pre>
 <blockquote>
 <p>Note: </p>
 <p>If you want to use gazebo, remeber to install:</p>
-<p><code>conda install -y -c robostack ros-noetic-gazebo-ros ros-noetic-gazebo-dev ros-noetic-gazebo-msgs ros-noetic-gazebo-plugins ros-noetic-gazebo-ros-control ros-noetic-gazebo-ros-pkgs gazebo</code></p>
+<p><code>conda install -y -c robostack ros-noetic-gazebo-ros ros-noetic-gazebo-dev ros-noetic-gazebo-msgs ros-noetic-gazebo-plugins ros-noetic-gazebo-ros-control ros-noetic-gazebo-ros-pkgs ros-noetic-joint-state-controller ros-noetic-diff-drive-controller gazebo</code></p>
 </blockquote>
 <h4 id="2-install-openai-for-ros">2. Install <a href="https://bitbucket.org/theconstructcore/openai_ros/src/kinetic-devel/">OpenAI for ROS</a></h4>
 <pre><code class="language-shell">cd ~/catkin_ws/src
@@ -383,6 +395,14 @@ git clone https://github.com/jc-bao/jetbot_rl
 cd ..
 catkin_make
 source devel/setup.bash
+</code></pre>
+<h4 id="extra-install-mkdocs-and-materials">Extra: Install Mkdocs and <a href="https://squidfunk.github.io/mkdocs-material/getting-started/">Materials</a></h4>
+<pre><code class="language-shell">conda install -y mkdocs mkdocs-material
+
+cd $YOUR_WORK_DIRECTORY
+mkdocs serve # check if the doc works @ http://localhost:8000/
+
+mkdocs gh-deploy --force # push to github and deploy
 </code></pre>
                 
               
