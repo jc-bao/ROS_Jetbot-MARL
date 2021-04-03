@@ -235,6 +235,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#extra-install-mkdocs-and-materials" class="md-nav__link">
+    Extra: Install Mkdocs and Materials
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -333,6 +340,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#extra-install-mkdocs-and-materials" class="md-nav__link">
+    Extra: Install Mkdocs and Materials
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -381,6 +395,14 @@ git clone https://github.com/jc-bao/jetbot_rl
 cd ..
 catkin_make
 source devel/setup.bash
+</code></pre>
+<h4 id="extra-install-mkdocs-and-materials">Extra: Install Mkdocs and <a href="https://squidfunk.github.io/mkdocs-material/getting-started/">Materials</a></h4>
+<pre><code class="language-shell">conda install -y mkdocs mkdocs-material
+
+cd $YOUR_WORK_DIRECTORY
+mkdocs serve # check if the doc works @ http://localhost:8000/
+
+mkdocs gh-deploy --force # push to github and deploy
 </code></pre>
                 
               
