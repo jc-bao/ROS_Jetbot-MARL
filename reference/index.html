@@ -14,7 +14,7 @@
     
     
       
-        <title>Install - Jetbot Reinforcement Learning</title>
+        <title>Reference - Jetbot Reinforcement Learning</title>
       
     
     
@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#install" class="md-skip">
+        <a href="#reference" class="md-skip">
           Skip to content
         </a>
       
@@ -89,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Install
+              Reference
             
           </span>
         </div>
@@ -182,70 +182,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Install
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../install/" class="md-nav__link">
         Install
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-install-jetbot-gazebo-environment" class="md-nav__link">
-    1. Install Jetbot gazebo environment
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-install-openai-for-ros" class="md-nav__link">
-    2. Install OpenAI for ROS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-install-jetbot-rl" class="md-nav__link">
-    3. Install Jetbot RL
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extra-install-mkdocs-and-materials" class="md-nav__link">
-    Extra: Install Mkdocs and Materials
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -301,11 +242,49 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../reference/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Reference
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-formation-control-project-on-turtlebot3-by-cambridge-team" class="md-nav__link">
+    A formation control project on Turtlebot3 by Cambridge team
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -335,29 +314,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-install-jetbot-gazebo-environment" class="md-nav__link">
-    1. Install Jetbot gazebo environment
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-install-openai-for-ros" class="md-nav__link">
-    2. Install OpenAI for ROS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-install-jetbot-rl" class="md-nav__link">
-    3. Install Jetbot RL
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extra-install-mkdocs-and-materials" class="md-nav__link">
-    Extra: Install Mkdocs and Materials
+  <a href="#a-formation-control-project-on-turtlebot3-by-cambridge-team" class="md-nav__link">
+    A formation control project on Turtlebot3 by Cambridge team
   </a>
   
 </li>
@@ -375,50 +333,9 @@
               
                 
                 
-                <h1 id="install">Install</h1>
-<h4 id="1-install-jetbot-gazebo-environment">1. Install <a href="https://github.com/issaiass/jetbot_diff_drive">Jetbot gazebo environment</a></h4>
-<p>Quick install instruction:</p>
-<pre><code>conda create -n ros ros-noetic-desktop -conda-forge -c robostack &amp;&amp; conda activate ros
-
-cd ~/catkin_ws/src
-git clone --recursive https://github.com/jc-bao/Jetbot_RLFormationControl.git
-cd ..; catkin_make
-source devel/setup.bash
-</code></pre>
-<blockquote>
-<p>Note: </p>
-<p>If you want to use gazebo, remeber to install:</p>
-<p><code>conda install -y -c robostack ros-noetic-gazebo-ros ros-noetic-gazebo-dev ros-noetic-gazebo-msgs ros-noetic-gazebo-plugins ros-noetic-gazebo-ros-control ros-noetic-gazebo-ros-pkgs ros-noetic-joint-state-controller ros-noetic-diff-drive-controller gazebo</code></p>
-</blockquote>
-<h4 id="2-install-openai-for-ros">2. Install <a href="https://bitbucket.org/theconstructcore/openai_ros/src/kinetic-devel/">OpenAI for ROS</a></h4>
-<pre><code class="language-shell">cd ~/catkin_ws/src
-git clone https://bitbucket.org/theconstructcore/openai_ros.git
-cd ..
-catkin_make
-source devel/setup.bash
-rosdep install openai_ros
-# install OpenAI baselines
-cd $THE_PATH_YOU_WANT_TO_INSTALL
-git clone https://github.com/openai/baselines.git
-cd baselines
-pip install tensorflow==1.14 # pip install tensorflow-gpu==1.14
-pip install -e .
-</code></pre>
-<h4 id="3-install-jetbot-rl">3. Install <a href="https://github.com/jc-bao/jetbot_rl">Jetbot RL</a></h4>
-<pre><code class="language-shell">cd ~/catkin_ws/src
-git clone https://github.com/jc-bao/jetbot_rl
-cd ..
-catkin_make
-source devel/setup.bash
-</code></pre>
-<h4 id="extra-install-mkdocs-and-materials">Extra: Install Mkdocs and <a href="https://squidfunk.github.io/mkdocs-material/getting-started/">Materials</a></h4>
-<pre><code class="language-shell">conda install -y mkdocs mkdocs-material
-
-cd $YOUR_WORK_DIRECTORY
-mkdocs serve # check if the doc works @ http://localhost:8000/
-
-mkdocs gh-deploy --force # push to github and deploy
-</code></pre>
+                <h1 id="reference">Reference</h1>
+<h4 id="a-formation-control-project-on-turtlebot3-by-cambridge-team">A formation control project on Turtlebot3 by Cambridge team</h4>
+<p>https://github.com/jc-bao/turtlebot3_formation</p>
                 
               
               
@@ -437,7 +354,7 @@ mkdocs gh-deploy --force # push to github and deploy
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href=".." class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../commom_issues/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -446,25 +363,11 @@ mkdocs gh-deploy --force # push to github and deploy
               <span class="md-footer__direction">
                 Previous
               </span>
-              Home
+              Commom Issues
             </div>
           </div>
         </a>
       
-      
-        <a href="../use_cases/" class="md-footer__link md-footer__link--next" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Use Cases
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
