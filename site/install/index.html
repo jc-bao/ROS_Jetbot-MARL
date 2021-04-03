@@ -14,7 +14,7 @@
     
     
       
-        <title>Install - My Docs</title>
+        <title>Install - Jetbot Reinforcement Learning</title>
       
     
     
@@ -70,7 +70,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+    <a href=".." title="Jetbot Reinforcement Learning" class="md-header__button md-logo" aria-label="Jetbot Reinforcement Learning" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -83,7 +83,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            My Docs
+            Jetbot Reinforcement Learning
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -150,13 +150,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+    <a href=".." title="Jetbot Reinforcement Learning" class="md-nav__button md-logo" aria-label="Jetbot Reinforcement Learning" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    My Docs
+    Jetbot Reinforcement Learning
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -216,7 +216,7 @@
       
         <li class="md-nav__item">
   <a href="#1-install-jetbot-gazebo-environment" class="md-nav__link">
-    1. Install jetbot gazebo environment
+    1. Install Jetbot gazebo environment
   </a>
   
 </li>
@@ -273,6 +273,21 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commom_issues" class="md-nav__link">
+        Commom Issues
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -299,7 +314,7 @@
       
         <li class="md-nav__item">
   <a href="#1-install-jetbot-gazebo-environment" class="md-nav__link">
-    1. Install jetbot gazebo environment
+    1. Install Jetbot gazebo environment
   </a>
   
 </li>
@@ -332,7 +347,22 @@
                 
                 
                 <h1 id="install">Install</h1>
-<h4 id="1-install-jetbot-gazebo-environment">1. Install <a href="https://github.com/issaiass/jetbot_diff_drive">jetbot gazebo environment</a></h4>
+<h4 id="1-install-jetbot-gazebo-environment">1. Install <a href="https://github.com/issaiass/jetbot_diff_drive">Jetbot gazebo environment</a></h4>
+<p>Quick install instruction:</p>
+<pre><code>conda create -n ros ros-noetic-desktop -conda-forge -c robostack &amp;&amp; conda activate ros
+
+cd ~/catkin_ws
+git clone -r https://github.com/jc-bao/Jetbot_RLFormationControl.git
+mv Jetbot_FormationControl/* src
+rm -r Jetbot_FormationControl
+catkin_make
+source devel/setup.bash
+</code></pre>
+<blockquote>
+<p>Note: </p>
+<p>If you want to use gazebo, remeber to install:</p>
+<p><code>conda install -y -c robostack ros-noetic-gazebo-ros ros-noetic-gazebo-dev ros-noetic-gazebo-msgs ros-noetic-gazebo-plugins ros-noetic-gazebo-ros-control ros-noetic-gazebo-ros-pkgs gazebo</code></p>
+</blockquote>
 <h4 id="2-install-openai-for-ros">2. Install <a href="https://bitbucket.org/theconstructcore/openai_ros/src/kinetic-devel/">OpenAI for ROS</a></h4>
 <pre><code class="language-shell">cd ~/catkin_ws/src
 git clone https://bitbucket.org/theconstructcore/openai_ros.git

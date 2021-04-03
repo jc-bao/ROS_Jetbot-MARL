@@ -14,7 +14,7 @@
     
     
       
-        <title>Use Cases - My Docs</title>
+        <title>Use Cases - Jetbot Reinforcement Learning</title>
       
     
     
@@ -70,7 +70,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+    <a href=".." title="Jetbot Reinforcement Learning" class="md-header__button md-logo" aria-label="Jetbot Reinforcement Learning" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -83,7 +83,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            My Docs
+            Jetbot Reinforcement Learning
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -150,13 +150,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+    <a href=".." title="Jetbot Reinforcement Learning" class="md-nav__button md-logo" aria-label="Jetbot Reinforcement Learning" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    My Docs
+    Jetbot Reinforcement Learning
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -244,8 +244,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-plot-training-result" class="md-nav__link">
-    2. Plot Training Result
+  <a href="#3-plot-training-result" class="md-nav__link">
+    3. Plot Training Result
   </a>
   
 </li>
@@ -268,6 +268,21 @@
     <li class="md-nav__item">
       <a href="../key_concepts/" class="md-nav__link">
         Key Concepts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commom_issues" class="md-nav__link">
+        Commom Issues
       </a>
     </li>
   
@@ -312,8 +327,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-plot-training-result" class="md-nav__link">
-    2. Plot Training Result
+  <a href="#3-plot-training-result" class="md-nav__link">
+    3. Plot Training Result
   </a>
   
 </li>
@@ -345,35 +360,46 @@
 <li>Determine which sensor to use</li>
 <li>Set virtual method for Task Environment</li>
 <li>Note: All staff you need to change in the code is commented by <code>TODO</code> in code. </li>
+</ul>
+</li>
 <li>
 <p>Details</p>
-</li>
+<ul>
 <li>
 <p>Init robot envrionment from gazebo environment.</p>
+<p><code>python
+  class JetbotRobotEnv(robot_gazebo_env.RobotGazeboEnv):</code></p>
+</li>
+<li>
+<p>Choose your own controller</p>
+<p><code>python
+ self.controllers_list = ['jetbot_joint_state_controller',
+                           'jetbot_velocity_controller'
+                    ]</code></p>
+<blockquote>
+<p><strong>Note</strong>:</p>
+<p>use this to get controller:</p>
+<p><code>$ rosservice call /jetbot_0/controller_manager/list_controllers</code></p>
+</blockquote>
+</li>
+<li>
+<p>Change the namespace <code>python self.robot_name_space = "jetbot_0"</code></p>
+<blockquote>
+<p><strong>Note</strong>:</p>
+<p>use this to get the namespace</p>
+<p><code>$ rostopic list | grep controller</code></p>
+</blockquote>
 </li>
 </ul>
-<p><code>python
-   class JetbotRobotEnv(robot_gazebo_env.RobotGazeboEnv):</code></p>
-<ul>
-<li>Choose your own controller</li>
-</ul>
-<p><code>python
-   self.controllers_list = ['jetbot_joint_state_controller',
-                                   'jetbot_velocity_controller'
-                                   ]</code></p>
-<p>!!! note
-      you can use <code>$ rosservice call /jetbot_0/controller_manager/list_controllers</code> to get the controller</p>
-<ul>
-<li>Change the namespace <code>python self.robot_name_space = "jetbot_0"</code>
-    !!! note
-      use this to get the namespace<code>$ rostopic list | grep controller</code></li>
-</ul>
+</li>
+<li>
+<p>Change Actions</p>
 </li>
 </ol>
 <h4 id="2-start-training">2. Start training</h4>
 <pre><code class="language-shell">roslaunch jetbot_rl start_training.launch
 </code></pre>
-<h4 id="2-plot-training-result">2. Plot Training Result</h4>
+<h4 id="3-plot-training-result">3. Plot Training Result</h4>
 <p>Run rqt_multipolt</p>
 <pre><code class="language-shell">rosrun rqt_multiplot rqt_multiplot
 </code></pre>
