@@ -1,6 +1,12 @@
 # Install
 
-#### 1. Install [jetbot gazebo environment](https://github.com/issaiass/jetbot_diff_drive)
+#### 1. Install [Jetbot gazebo environment](https://github.com/issaiass/jetbot_diff_drive)
+
+> Note: 
+>
+> If you want to use gazebo, remeber to install:
+>
+> `conda install -y -c robostack ros-noetic-gazebo-ros ros-noetic-gazebo-dev ros-noetic-gazebo-msgs ros-noetic-gazebo-plugins ros-noetic-gazebo-ros-control ros-noetic-gazebo-ros-pkgs gazebo`
 
 #### 2. Install [OpenAI for ROS](https://bitbucket.org/theconstructcore/openai_ros/src/kinetic-devel/)
 

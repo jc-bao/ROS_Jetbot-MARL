@@ -46,6 +46,10 @@
         > $ rostopic list | grep controller
         > ````
 
+2. Change Actions
+
+   
+
 #### 2. Start training
 
 ```shell
