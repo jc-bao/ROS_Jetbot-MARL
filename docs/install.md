@@ -7,11 +7,9 @@ Quick install instruction:
 ```
 conda create -n ros ros-noetic-desktop -conda-forge -c robostack && conda activate ros
 
-cd ~/catkin_ws
-git clone -r https://github.com/jc-bao/Jetbot_RLFormationControl.git
-mv Jetbot_FormationControl/* src
-rm -r Jetbot_FormationControl
-catkin_make
+cd ~/catkin_ws/src
+git clone --recursive https://github.com/jc-bao/Jetbot_RLFormationControl.git
+cd ..; catkin_make
 source devel/setup.bash
 ```
 
@@ -19,7 +17,7 @@ source devel/setup.bash
 >
 > If you want to use gazebo, remeber to install:
 >
-> `conda install -y -c robostack ros-noetic-gazebo-ros ros-noetic-gazebo-dev ros-noetic-gazebo-msgs ros-noetic-gazebo-plugins ros-noetic-gazebo-ros-control ros-noetic-gazebo-ros-pkgs gazebo`
+> `conda install -y -c robostack ros-noetic-gazebo-ros ros-noetic-gazebo-dev ros-noetic-gazebo-msgs ros-noetic-gazebo-plugins ros-noetic-gazebo-ros-control ros-noetic-gazebo-ros-pkgs ros-noetic-joint-state-controller ros-noetic-diff-drive-controller gazebo`
 
 #### 2. Install [OpenAI for ROS](https://bitbucket.org/theconstructcore/openai_ros/src/kinetic-devel/)
 

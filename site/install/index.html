@@ -348,6 +348,16 @@
                 
                 <h1 id="install">Install</h1>
 <h4 id="1-install-jetbot-gazebo-environment">1. Install <a href="https://github.com/issaiass/jetbot_diff_drive">Jetbot gazebo environment</a></h4>
+<p>Quick install instruction:</p>
+<pre><code>conda create -n ros ros-noetic-desktop -conda-forge -c robostack &amp;&amp; conda activate ros
+
+cd ~/catkin_ws
+git clone -r https://github.com/jc-bao/Jetbot_RLFormationControl.git
+mv Jetbot_FormationControl/* src
+rm -r Jetbot_FormationControl
+catkin_make
+source devel/setup.bash
+</code></pre>
 <blockquote>
 <p>Note: </p>
 <p>If you want to use gazebo, remeber to install:</p>
