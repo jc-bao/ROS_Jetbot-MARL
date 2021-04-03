@@ -2,6 +2,19 @@
 
 #### 1. Install [Jetbot gazebo environment](https://github.com/issaiass/jetbot_diff_drive)
 
+Quick install instruction:
+
+```
+conda create -n ros ros-noetic-desktop -conda-forge -c robostack && conda activate ros
+
+cd ~/catkin_ws
+git clone -r https://github.com/jc-bao/Jetbot_RLFormationControl.git
+mv Jetbot_FormationControl/* src
+rm -r Jetbot_FormationControl
+catkin_make
+source devel/setup.bash
+```
+
 > Note: 
 >
 > If you want to use gazebo, remeber to install:
