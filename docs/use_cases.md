@@ -33,9 +33,8 @@
          > use this to get controller:
          >
          > ```
-   > $ rosservice call /jetbot_0/controller_manager/list_controllers 
+         > $ rosservice call /jetbot_0/controller_manager/list_controllers 
          > ```
-      
       * Change the namespace `python self.robot_name_space = "jetbot_0" `
         
         > **Note**:
