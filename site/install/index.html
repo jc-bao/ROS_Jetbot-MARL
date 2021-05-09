@@ -401,8 +401,10 @@ rosdep install openai_ros
 cd $THE_PATH_YOU_WANT_TO_INSTALL
 git clone https://github.com/openai/baselines.git
 cd baselines
-pip install tensorflow==1.14 # pip install tensorflow-gpu==1.14
+conda config --add channels conda-forge
+conda install -c conda-forge tensorflow # 2.4.1 will be installed
 pip install -e .
+pip install gast==0.3.3 # compatible with tf 2.4.1
 </code></pre>
 <h4 id="3-install-jetbot-rl">3. Install <a href="https://github.com/jc-bao/jetbot_rl">Jetbot RL</a></h4>
 <pre><code class="language-shell">cd ~/catkin_ws/src

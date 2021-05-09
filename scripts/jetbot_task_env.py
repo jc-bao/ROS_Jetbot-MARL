@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # task environment
 import rospy
-import numpy
+import numpy as np
 import math
 from gym import spaces
 # TODO[done] import your robot env
@@ -44,13 +44,13 @@ class JetbotTaskEnv(jetbot_robot_env.JetbotRobotEnv):
         """
 
         max_yaw = math.pi
-        high = numpy.array([
+        high = np.array([
             self.max_x,
             self.max_y,
             max_yaw
             ])
         
-        self.observation_space = spaces.Box(-high, high)
+        self.observation_space = spaces.Box(-high, high, dtype=np.float32)
         
         rospy.logwarn("ACTION SPACES TYPE===>"+str(self.action_space))
         rospy.logwarn("OBSERVATION SPACES TYPE===>"+str(self.observation_space))
@@ -142,11 +142,11 @@ class JetbotTaskEnv(jetbot_robot_env.JetbotRobotEnv):
         we do not use the speed currently
         '''
 
-        jetbot_observations = [
+        jetbot_observations = np.array([
             round(pos_x, 1),
             round(pos_y, 1),
             round(yaw, 1),
-        ]
+        ])
         
         rospy.logdebug("Observations==>"+str(jetbot_observations))
 

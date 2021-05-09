@@ -1,45 +1,45 @@
-jetbot_0: #namespace
+#jetbot_0: #namespace
 
     
-    # DeepQ Parameters
-    max_timesteps: 100000 # Maximum time steps of all the steps done throughout all the episodes
-    buffer_size: 500 # size of the replay buffer
-    lr: 1e-3 # learning rate for adam optimizer
-    exploration_fraction: 0.1 # fraction of entire training period over which the exploration rate is annealed
-    exploration_final_eps: 0.02 # final value of random action probability
-    print_freq: 1 # how often (Ex: 1 means every episode, 2 every two episode we print ) to print out training progress set to None to disable printing
-    
-    reward_task_learned: 1000
-    
-    # Learning General Parameters
-    # TODO Change action/observation parameter
-    n_actions: 4 # We have 4 actions
-    n_observations: 3 # We have 3 different observations
+# DeepQ Parameters
+max_timesteps: 100000 # Maximum time steps of all the steps done throughout all the episodes
+buffer_size: 500 # size of the replay buffer
+lr: 1e-3 # learning rate for adam optimizer
+exploration_fraction: 0.1 # fraction of entire training period over which the exploration rate is annealed
+exploration_final_eps: 0.02 # final value of random action probability
+print_freq: 1 # how often (Ex: 1 means every episode, 2 every two episode we print ) to print out training progress set to None to disable printing
 
-    speed_step: 1.0 # Time to wait in the reset phases
+reward_task_learned: 1000
 
-    init_linear_vel: 1.0 # Initial speed of the Roll Disk
-    init_angular_vel: 0.0 # Initial speed of the Roll Disk
+# Learning General Parameters
+# TODO Change action/observation parameter
+n_actions: 2 # We have 4 actions
+n_observations: 7 # We have 7 different observations
 
-    linear_speed_fixed_value: 1.0 # Max angular speed
-    angular_speed_fixed_value: 1.0 # Speed at which it will move forwards
+speed_step: 1.0 # Time to wait in the reset phases
 
-    max_x: 1000.0
-    max_y: 1000.0
+init_linear_vel: 1.0 # Initial speed of the Roll Disk
+init_angular_vel: 0.0 # Initial speed of the Roll Disk
 
-    init_pose:
-      x: 0.0
-      y: 0.0
-      z: 0.0
+linear_speed_fixed_value: 1.0 # Max angular speed
+angular_speed_fixed_value: 1.0 # Speed at which it will move forwards
 
-    end_episode_points: 10000 # Points given when ending an epis
+max_x: 1000.0
+max_y: 1000.0
 
-    x_weight: 100.0 # Multiplier for the reward
-    y_weight: 100.0 # Multiplier for the reward
-    yaw_weight: 100.0 # Multiplier for the reward
+init_pose:
+  x: 0.0
+  y: 0.0
+  z: 0.0
 
-    max_episode_steps: 1000
+end_episode_points: 10000 # Points given when ending an epis
+
+x_weight: 100.0 # Multiplier for the reward
+y_weight: 100.0 # Multiplier for the reward
+yaw_weight: 100.0 # Multiplier for the reward
+
+max_episode_steps: 250
 
 
 
-    
+

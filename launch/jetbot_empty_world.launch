@@ -4,8 +4,8 @@
     <!-- these are the arguments you can pass this launch file, for example paused:=true -->
     <arg name="paused" default="false"/>
     <arg name="use_sim_time" default="true"/>
-    <arg name="gui" default="false"/>
-    <arg name="headless" default="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
     <arg name="debug" default="false"/>
     <!-- Initial Location of the robot -->
     <!-- location for jetbot_0 -->
@@ -13,7 +13,7 @@
     <arg name="y0" default="0.0"/>
     <arg name="z0" default="0.0"/>
     <arg name="yaw0" default="0.0"/>
-    <arg name="x1" default="1.5"/>
+    <arg name="x1" default="-1.5"/>
     <arg name="y1" default="0.0"/>
     <arg name="z1" default="0.0"/>
     <arg name="yaw1" default="0.0"/>
@@ -36,7 +36,7 @@
         <arg name="paused" value="$(arg paused)"/>
         <arg name="use_sim_time" value="$(arg use_sim_time)"/>
         <arg name="headless" value="$(arg headless)"/>
-        <arg name="world_name" value="$(arg world_name)" />
+        <arg name="world_name" value="$(arg world_name)" />    
     </include>
     <!-- Get the robot description -->
     <!-- cannot be deleted  -->
@@ -46,14 +46,14 @@
         <arg name="lidar_enable" value="$(arg lidar_enable)"/>
         <arg name="visualize_laser" value="$(arg visualize_laser)"/>
         <arg name="imu_enable" value="$(arg imu_enable)"/>
-        <arg name="ultrasonic_enable" value="$(arg ultrasonic_enable)"/>
+        <arg name="ultrasonic_enable" value="$(arg ultrasonic_enable)"/>    
     </include>
     <rosparam file="$(find jetbot_control)/config/pid.yaml" command="load" ns="/" />
     <group ns="jetbot_0">
         <rosparam file="$(find jetbot_control)/config/control.yaml" command="load"/>
         <rosparam file="$(find jetbot_control)/config/pid.yaml" command="load"/>
         <param name="/jetbot_0/robot_description" command="$(find xacro)/xacro $(find jetbot_description)/urdf/jetbot.urdf.xacro
-                                pointcloud_enable:=$(arg pointcloud_enable)
+                                pointcloud_enable:=$(arg pointcloud_enable) 
                                 realsense_enable:=$(arg realsense_enable)
                                 lidar_enable:=$(arg lidar_enable)
                                 visualize_laser:=$(arg visualize_laser)
@@ -73,7 +73,7 @@
                 -unpause
                 -urdf
                 -param robot_description
-                -model jetbot_0"
+                -model jetbot_0" 
             respawn="false"
             output="screen" >
         </node>
@@ -134,8 +134,7 @@
         </node>
 
     </group>
-
+    
     <rosparam command="load" file="$(find jetbot_rl_pkg)/config/jetbot_params_deepQ.yaml" />
 
-    <node pkg="jetbot_rl_pkg" name="jetbot_gym" type="jetbot_start_multi_train.py" output="screen"/>
 </launch>
