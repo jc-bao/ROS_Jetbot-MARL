@@ -1,5 +1,7 @@
 # Reinforcement Learning for Jetbot
 
+[Github](https://github.com/jc-bao/ROS_Jetbot-MARL)  [Slide](https://cloud.tsinghua.edu.cn/f/938811885ce2401b844d/)
+
 ## Introduction
 
 This project aimed to build an applicable RL training environment for jetbot.
